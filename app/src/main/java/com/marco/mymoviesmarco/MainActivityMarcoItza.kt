@@ -45,20 +45,19 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     MoviesMarcoItzaTheme {
-        Column(
+        Row(
             modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
 
         ){
             Greeting(
                     name= "Marco", modifier = Modifier
-                    .background(Color.LightGray)
-                    .weight (2f)
+                        .background(Color.LightGray)
             )
             Greeting(
                 name= "Android", modifier = Modifier
                     .background(Color.Yellow)
-                    .weight (1f)
             )
             }
     }
