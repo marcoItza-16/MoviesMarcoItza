@@ -1,6 +1,8 @@
 package com.marco.mymoviesmarco
 
+import android.media.browse.MediaBrowser
 import android.os.Bundle
+import android.text.style.BackgroundColorSpan
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -15,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.marco.mymoviesmarco.ui.theme.MoviesMarcoItzaTheme
 
 class MainActivity : ComponentActivity() {
@@ -34,36 +37,26 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-@Preview(
-    showBackground = true,
-    name = "Android Greeting",
-    widthDp = 400,
-    heightDp = 200
-    )
-
+@Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-    MoviesMarcoItzaTheme {
-        Row(
-            modifier = Modifier.fillMaxSize(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
-
-        ){
-            Greeting(
-                    name= "Marco", modifier = Modifier
-                        .background(Color.LightGray)
-            )
-            Greeting(
-                name= "Android", modifier = Modifier
-                    .background(Color.Yellow)
-            )
-            }
-    }
+fun MediaItem() {
+    Column {
+        Box(
+            modifier = Modifier
+                .height(200.dp)
+                .fillMaxWidth()
+                .background(color = Color.Red)
+            ) {
+        }
+            Text("Title 1")
+        }
 }
 
+
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(
+    name: String,
+    modifier: Modifier = Modifier
+) {
     Text(text = "Hello $name!", modifier = modifier)
 }
