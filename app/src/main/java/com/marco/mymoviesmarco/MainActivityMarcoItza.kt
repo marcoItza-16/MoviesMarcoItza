@@ -6,6 +6,7 @@ import android.text.style.BackgroundColorSpan
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
@@ -37,7 +38,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun MediaItem() {
     Column {
@@ -52,11 +53,37 @@ fun MediaItem() {
         }
 }
 
-
 @Composable
 fun Greeting(
     name: String,
     modifier: Modifier = Modifier
 ) {
+
     Text(text = "Hello $name!", modifier = modifier)
 }
+
+@Preview(showBackground = true, widthDp = 200, heightDp = 100)
+@Composable
+fun ButtonText() {
+    Box(modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+        text = "Hello Marco",
+        modifier = Modifier
+            .background(Color.Cyan)
+            .border(width =  2.dp, color = Color.Blue)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .background(Color.LightGray)
+            .border(width =  2.dp, color = Color.Red)
+            .padding(8.dp)
+
+
+        )
+    }
+}
+
+//@Preview(showBackground = true, name = "Android Greeting")
+@Composable
+fun DefaultPreview() {
+    }
