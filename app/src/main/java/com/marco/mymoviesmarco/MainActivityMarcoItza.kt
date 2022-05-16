@@ -6,12 +6,13 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.PlayArrow
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,7 +33,7 @@ class MainActivity : ComponentActivity() {
             MoviesMarcoItzaTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    MediaListItem(item)
+                    MediaListItem()
 
                 }
             }
@@ -43,10 +44,10 @@ class MainActivity : ComponentActivity() {
 @ExperimentalCoilApi
 @Preview
 @Composable
-fun MediaList(item: Int) {
-    LazyColumn{
+fun MediaListItem() {
+    LazyColumn {
         items(getMedia()) { item ->
-            MediaListItem(item)
+            MediaListItem()
         }
     }
 }
@@ -54,12 +55,13 @@ fun MediaList(item: Int) {
 @ExperimentalCoilApi
 //@Preview(showBackground = true)
 @Composable
-fun MediaListItem(item: Int) {
+fun MediaListItem(item: MediaItem) {
     Column {
         Box(
             modifier = Modifier
                 .height(200.dp)
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            contentAlignment = Alignment.Center
             ) {
             Image(
                 painter = rememberImagePainter(
@@ -72,7 +74,7 @@ fun MediaListItem(item: Int) {
 
             if (item.type == MediaItem.Type.VIDEO) {
                 Icon(
-                    imageVector = Icons.Outlined.PlayArrow,
+                    imageVector = Icons.Default.PlayArrow,
                     contentDescription = null,
                     modifier = Modifier.size(92.dp),
                     tint = Color.White
