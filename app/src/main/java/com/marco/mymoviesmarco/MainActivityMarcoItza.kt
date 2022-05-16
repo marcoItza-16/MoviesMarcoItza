@@ -65,6 +65,13 @@ fun MediaItem() {
                     contentScale = ContentScale.Crop
             )
 
+            Icon(
+                imageVector = Icons.Outlined.PlayArrow,
+                contentDescription =null,
+                modifier = Modifier.size(92.dp),
+                tint = Color.White
+            )
+
         }
             Box(
                 contentAlignment = Alignment.Center,
