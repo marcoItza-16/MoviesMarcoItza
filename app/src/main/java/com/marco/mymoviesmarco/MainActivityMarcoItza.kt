@@ -51,7 +51,7 @@ fun MediaListItem() {
         }
     }
 }
-
+//Implemetacion de LazRo
 @ExperimentalCoilApi
 //@Preview(showBackground = true)
 @Composable
