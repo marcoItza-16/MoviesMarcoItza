@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -28,6 +29,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.translationMatrix
+import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.marco.mymoviesmarco.ui.theme.MoviesMarcoItzaTheme
@@ -39,7 +41,7 @@ class MainActivity : ComponentActivity() {
             MoviesMarcoItzaTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    MediaItem()
+                    MediaList()
 
                 }
             }
@@ -47,7 +49,19 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
+@ExperimentalCoilApi
+@Preview
+@Composable
+fun MediaList() {
+    LazyColumn{
+        items(100) {
+            MediaItem()
+        }
+    }
+}
+
+@ExperimentalCoilApi
+//@Preview(showBackground = true)
 @Composable
 fun MediaItem() {
     Column {
