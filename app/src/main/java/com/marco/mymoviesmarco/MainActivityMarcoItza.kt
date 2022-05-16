@@ -1,8 +1,6 @@
 package com.marco.mymoviesmarco
 
-import android.media.browse.MediaBrowser
 import android.os.Bundle
-import android.text.style.BackgroundColorSpan
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
@@ -13,25 +11,18 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.outlined.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.graphics.translationMatrix
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
-import coil.transform.CircleCropTransformation
 import com.marco.mymoviesmarco.ui.theme.MoviesMarcoItzaTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,7 +32,7 @@ class MainActivity : ComponentActivity() {
             MoviesMarcoItzaTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    MediaList()
+                    MediaListItem(item)
 
                 }
             }
@@ -52,10 +43,10 @@ class MainActivity : ComponentActivity() {
 @ExperimentalCoilApi
 @Preview
 @Composable
-fun MediaList() {
+fun MediaList(item: Int) {
     LazyColumn{
-        items(100) {
-            MediaItem()
+        items(getMedia()) { item ->
+            MediaListItem(item)
         }
     }
 }
@@ -63,7 +54,7 @@ fun MediaList() {
 @ExperimentalCoilApi
 //@Preview(showBackground = true)
 @Composable
-fun MediaItem() {
+fun MediaListItem(item: Int) {
     Column {
         Box(
             modifier = Modifier
@@ -79,12 +70,14 @@ fun MediaItem() {
                     contentScale = ContentScale.Crop
             )
 
-            Icon(
-                imageVector = Icons.Outlined.PlayArrow,
-                contentDescription =null,
-                modifier = Modifier.size(92.dp),
-                tint = Color.White
-            )
+            if (item.type == MediaItem.Type.VIDEO) {
+                Icon(
+                    imageVector = Icons.Outlined.PlayArrow,
+                    contentDescription = null,
+                    modifier = Modifier.size(92.dp),
+                    tint = Color.White
+                )
+            }
 
         }
             Box(
@@ -95,7 +88,7 @@ fun MediaItem() {
                     .padding(16.dp)
             ) {
             Text(
-                text ="Title 1",
+                text = item.title,
                 style = MaterialTheme.typography.h6
             )
 
