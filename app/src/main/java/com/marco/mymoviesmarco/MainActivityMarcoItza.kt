@@ -51,7 +51,8 @@ fun MediaListItem() {
         }
     }
 }
-//Implemetacion de LazRo
+
+//Scafflold y App Bar
 @ExperimentalCoilApi
 //@Preview(showBackground = true)
 @Composable
